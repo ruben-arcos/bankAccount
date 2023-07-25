@@ -1,13 +1,13 @@
 # bankAccount
-BankAccount class - This class represents a bank account.
-1. The class should have the following fields:
-    * accountNumber - String representing the account number
-    * owner - String representing the owner of the account
-    * transactions - An array of transactions representing the history of all transactions associated with this account
-2. The constructor should take in the following input:
-    * accountNumber - The account Number
-    * owner - The name of the person who owns this account
-3. NOTE: When an account is created, you should initialize the transactions array to be an empty array
+DONE: BankAccount class - This class represents a bank account.
+1.~~The class should have the following fields:~~
+    ~~* accountNumber - String representing the account number~~
+   ~~ * owner - String representing the owner of the account~~
+    ~~* transactions - An array of transactions representing the history of all transactions associated with this account~~
+2. ~~The constructor should take in the following input:~~
+    ~~* accountNumber - The account Number~~
+    ~~ * owner - The name of the person who owns this account~~
+3.~~ NOTE: When an account is created, you should initialize the transactions array to be an empty array~~
 4. The class should have the following 3 methods:
     * balance() - This method does not take any input, and returns the current balance on the account. The balance is computed by summing up the amounts in the transactions array.
     * deposit(amt) - This method takes in a single input, the deposit amount. This method should create a new transaction representing the deposit, and add it to the transactions array.

@@ -16,13 +16,18 @@ class BankAccount {
   }
 
   charge(payee, amt) {
-    let chargeTransaction = new Transaction(-amt, payee);
-    this.transaction.push(chargeTransaction);
+    let currentBalance = this.balance();
+    if (amt <= currentBalance) {
+      let chargeTransaction = new Transaction(-amt, payee);
+      this.transaction.push(chargeTransaction);
+    }
   }
 
   deposit(amt) {
-    let depositTransaction = new Transaction(amt, 'Deposit');
-    this.transaction.push(depositTransaction)
+    if (amt > 0) {
+      let depositTransaction = new Transaction(amt, "Deposit");
+      this.transaction.push(depositTransaction);
+    }
   }
 }
 
@@ -55,6 +60,22 @@ if (typeof describe === "function") {
       assert.equal(acct1.balance(), 100);
       acct1.charge("Target", 10);
       assert.equal(acct1.balance(), 90);
+    });
+
+    it("should not allow a negative deposit", function () {
+      let acct1 = new BankAccount("xx4432", "James Doe");
+      assert.equal(acct1.balance(), 0);
+      acct1.deposit(100);
+      assert.equal(acct1.balance(), 100);
+      acct1.deposit(-30);
+      assert.equal(acct1.balance(), 100);
+    });
+
+    it("should not allow charging to overdraft", function () {
+      let acct1 = new BankAccount("xx4432", "James Doe");
+      assert.equal(acct1.balance(), 0);
+      acct1.charge("Target", 30);
+      assert.equal(acct1.balance(), 0);
     });
   });
 
